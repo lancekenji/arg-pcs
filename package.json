@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "generate:qrs": "tsx scripts/generate-qr.ts",
     "lint": "oxlint",
     "preview": "vite preview"
   },
@@ -44,6 +45,7 @@
     "@vitejs/plugin-react": "^6.0.4",
     "babel-plugin-react-compiler": "^1.0.0",
     "oxlint": "^1.75.0",
+    "tsx": "^4.23.9",
     "typescript": "~6.0.2",
     "vite": "^8.2.0"
   }

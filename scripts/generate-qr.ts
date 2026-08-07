@@ -1,25 +1,30 @@
+import fs from "node:fs/promises";
+import path from "node:path";
 import QRCode from "qrcode";
-import fs from "fs/promises";
 
-const codes = [
-  "ARG-QR-001",
-  "ARG-QR-002",
-  "ARG-QR-003",
-  "ARG-QR-004",
-  "ARG-QR-005",
-];
+import { qrMarkers, QR_GAME_CODE } from "../src/data/qrs";
 
-async function generate() {
-  await fs.mkdir("./public/qrs", {
-    recursive: true,
+const outputDirectory = path.resolve("public/qrs");
+
+await fs.mkdir(outputDirectory, {
+  recursive: true,
+});
+
+for (const [index, marker] of qrMarkers.entries()) {
+  const payload = JSON.stringify({
+    game: QR_GAME_CODE,
+    marker: marker.id,
   });
 
-  for (const code of codes) {
-    await QRCode.toFile(`./public/qrs/${code}.png`, code, {
-      width: 600,
-      margin: 4,
-    });
-  }
+  const outputFile = path.join(outputDirectory, `marker-${index + 1}.png`);
+
+  await QRCode.toFile(outputFile, payload, {
+    width: 600,
+    margin: 2,
+    errorCorrectionLevel: "H",
+  });
+
+  console.log(`Generated ${outputFile}`);
 }
 
-generate();
+console.log("Finished generating QR codes.");
