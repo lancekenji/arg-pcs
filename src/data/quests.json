@@ -1,0 +1,69 @@
+{
+  "main": {
+    "stories": [
+      {
+        "story_title": "The Clocktower Cipher",
+        "full_story_after_completing_quest": "The missing bell was never stolen. It was hidden inside the old clocktower so its chime could mark the start of the Morning Walk. By following the tree, wind, and pool clues, you restored the rhythm of the campus and unlocked the path back to the booth.",
+        "quests": [
+          {
+            "sequence": 1,
+            "riddle": "I have leaves but no book. I have branches but no arms.",
+            "answer": "tree"
+          },
+          {
+            "sequence": 2,
+            "riddle": "I move but I have no legs. I whisper across the field and vanish when held.",
+            "answer": "wind"
+          },
+          {
+            "sequence": 3,
+            "riddle": "I hold water and reflect your face, but I never keep what I show.",
+            "answer": "pool"
+          }
+        ]
+      },
+      {
+        "story_title": "The Sunken Kingdom",
+        "full_story_after_completing_quest": "The campus pond guarded a tiny drowned kingdom from an old festival tale. The crown, clamshell, and pearl were symbols left by students before you, pointing every explorer toward courage, memory, and community.",
+        "quests": [
+          {
+            "sequence": 1,
+            "riddle": "I sit on a ruler's head, but I am not a thought.",
+            "answer": "crown"
+          },
+          {
+            "sequence": 2,
+            "riddle": "I close like a secret and open beside the sea.",
+            "answer": "clamshell"
+          },
+          {
+            "sequence": 3,
+            "riddle": "I begin as grit, then become a small moon in a shell.",
+            "answer": "pearl"
+          }
+        ]
+      },
+      {
+        "story_title": "The Haunted House",
+        "full_story_after_completing_quest": "The so-called haunted house was a forgotten club room where past students prepared welcome games. The candle, key, and mirror were props from the first Morning Walk, waiting for a new explorer to bring the tradition back to life.",
+        "quests": [
+          {
+            "sequence": 1,
+            "riddle": "I shrink as I brighten the room.",
+            "answer": "candle"
+          },
+          {
+            "sequence": 2,
+            "riddle": "I am small, toothed, and trusted with doors.",
+            "answer": "key"
+          },
+          {
+            "sequence": 3,
+            "riddle": "I copy every face but keep none for myself.",
+            "answer": "mirror"
+          }
+        ]
+      }
+    ]
+  }
+}
