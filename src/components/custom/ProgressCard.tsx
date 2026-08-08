@@ -1,44 +1,58 @@
 interface ProgressCardProps {
   current: number;
-
   total: number;
 }
 
 export default function ProgressCard({ current, total }: ProgressCardProps) {
-  const percent = Math.min(100, Math.max(0, (current / total) * 100));
+  const steps = Array.from({ length: total }, (_, i) => i + 1);
 
   return (
     <section
       aria-label="Quest Progress"
-      className="rounded-2xl border border-white/70 bg-white/85 p-4 shadow-lg shadow-cyan-950/10 backdrop-blur-md"
+      className="rounded-xl border border-white/70 bg-white/85 px-4 py-3 shadow-sm backdrop-blur-md"
     >
-      <header className="flex items-center justify-between gap-3">
-        <section>
-          <p className="text-xs font-black uppercase tracking-widest text-cyan-700">
-            Quest Progress
-          </p>
-
-          <h2 className="mt-1 text-2xl font-black text-slate-950">
-            {current} / {total}
-          </h2>
-        </section>
-
-        <p className="rounded-full bg-cyan-100 px-3 py-1 text-xs font-black text-cyan-800">
-          Stage {current}
+      <header className="flex items-center justify-between gap-3 mb-3">
+        <h2 className="text-xs font-black uppercase tracking-wider text-cyan-700 m-0">
+          Quest Progress
+        </h2>
+        <p className="m-0 text-xs font-black text-slate-500">
+          Stage {current} of {total}
         </p>
       </header>
 
-      <section
-        aria-hidden="true"
-        className="mt-4 h-3 overflow-hidden rounded-full bg-slate-100 shadow-inner"
+      <nav
+        aria-label="Progress Steps"
+        className="flex items-center justify-center gap-2"
       >
-        <section
-          className="h-full rounded-full bg-linear-to-r from-cyan-500 to-blue-500 transition-all duration-500"
-          style={{ width: `${percent}%` }}
-        />
-      </section>
+        {steps.map((step, index) => {
+          const isDone = step < current;
+          const isActive = step === current;
 
-      <progress value={current} max={total} className="sr-only" />
+          return (
+            <span key={step} className="flex items-center gap-2">
+              <span
+                className={`h-7 w-7 rounded-full inline-flex items-center justify-center text-xs font-black transition-all ${
+                  isDone
+                    ? "bg-cyan-600 text-white shadow-sm"
+                    : isActive
+                      ? "bg-cyan-100 text-cyan-800 border-2 border-cyan-600 shadow-sm"
+                      : "bg-slate-100 text-slate-400"
+                }`}
+              >
+                {isDone ? "✓" : step}
+              </span>
+              {index < steps.length - 1 && (
+                <span
+                  aria-hidden="true"
+                  className={`w-8 h-1 rounded-full inline-block transition-all ${
+                    step < current ? "bg-cyan-600" : "bg-slate-200"
+                  }`}
+                />
+              )}
+            </span>
+          );
+        })}
+      </nav>
     </section>
   );
 }

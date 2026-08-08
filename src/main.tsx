@@ -4,6 +4,7 @@ import { createRouter, RouterProvider } from "@tanstack/react-router";
 import "./index.css";
 import "../src/lib/pwa";
 import { routeTree } from "./routeTree.gen";
+import { AnimatedResourceWrapper } from "./components/custom/AnimatedBackground";
 
 const router = createRouter({ routeTree });
 declare module "@tanstack/react-router" {
@@ -13,6 +14,8 @@ declare module "@tanstack/react-router" {
 }
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <AnimatedResourceWrapper>
+      <RouterProvider router={router}></RouterProvider>
+    </AnimatedResourceWrapper>
   </StrictMode>,
 );

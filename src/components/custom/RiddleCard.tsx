@@ -7,7 +7,7 @@ interface Props {
 
 export default function RiddleCard({ quest, storyTitle }: Props) {
   return (
-    <article className="rounded-3xl border border-white/70 bg-white/90 p-6 shadow-xl shadow-cyan-950/10 backdrop-blur-md">
+    <article className="rounded-3xl p-6">
       <header>
         <p className="text-xs font-black uppercase tracking-widest text-cyan-700">
           {storyTitle}

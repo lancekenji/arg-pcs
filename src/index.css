@@ -2,7 +2,7 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/inter";
-
+@import "@fontsource-variable/pixelify-sans";
 @custom-variant dark (&:is(.dark *));
 
 body {
@@ -10,6 +10,170 @@ body {
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
+}
+
+.pixel-text {
+  font-family: "Pixelify Sans Variable", "Pixelify Sans", sans-serif;
+}
+
+@keyframes tech-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(var(--logo-rotation));
+  }
+
+  50% {
+    transform: translate3d(0, -8px, 0)
+      rotate(calc(var(--logo-rotation) + 2deg));
+  }
+}
+
+@keyframes logo-enter-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-140%) translateY(20px) rotate(-35deg)
+      scale(0.55);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateX(15%) translateY(-5px) rotate(8deg)
+      scale(1.08);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) translateY(0) rotate(0deg)
+      scale(1);
+  }
+}
+
+@keyframes logo-enter-right {
+  0% {
+    opacity: 0;
+    transform: translateX(140%) translateY(-20px) rotate(35deg)
+      scale(0.55);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateX(-15%) translateY(5px) rotate(-8deg)
+      scale(1.08);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) translateY(0) rotate(0deg)
+      scale(1);
+  }
+}
+
+.logo-enter-left {
+  animation: logo-enter-left 850ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.logo-enter-right {
+  animation: logo-enter-right 850ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes floating-logo-left-1 {
+  0%,
+  100% {
+    transform: translateX(-32%) translateY(0) rotate(-12deg);
+  }
+
+  50% {
+    transform: translateX(-35%) translateY(-7px) rotate(-9deg);
+  }
+}
+
+@keyframes floating-logo-right-1 {
+  0%,
+  100% {
+    transform: translateX(32%) translateY(0) rotate(12deg);
+  }
+
+  50% {
+    transform: translateX(35%) translateY(7px) rotate(15deg);
+  }
+}
+
+@keyframes floating-logo-left-2 {
+  0%,
+  100% {
+    transform: translateX(-38%) translateY(0) rotate(6deg);
+  }
+
+  50% {
+    transform: translateX(-41%) translateY(6px) rotate(9deg);
+  }
+}
+
+@keyframes floating-logo-right-2 {
+  0%,
+  100% {
+    transform: translateX(38%) translateY(0) rotate(-6deg);
+  }
+
+  50% {
+    transform: translateX(41%) translateY(-6px) rotate(-9deg);
+  }
+}
+
+@keyframes floating-logo-left-3 {
+  0%,
+  100% {
+    transform: translateX(-30%) translateY(0) rotate(12deg);
+  }
+
+  50% {
+    transform: translateX(-34%) translateY(-8px) rotate(8deg);
+  }
+}
+
+@keyframes floating-logo-right-3 {
+  0%,
+  100% {
+    transform: translateX(30%) translateY(0) rotate(-12deg);
+  }
+
+  50% {
+    transform: translateX(34%) translateY(8px) rotate(-8deg);
+  }
+}
+
+
+.floating-logo-left-1 {
+  animation: floating-logo-left-1 4.8s ease-in-out infinite;
+}
+
+.floating-logo-right-1 {
+  animation: floating-logo-right-1 5.2s ease-in-out infinite;
+}
+
+.floating-logo-left-2 {
+  animation: floating-logo-left-2 4.4s ease-in-out infinite;
+  animation-delay: -1.2s;
+}
+
+.floating-logo-right-2 {
+  animation: floating-logo-right-2 5.6s ease-in-out infinite;
+  animation-delay: -2s;
+}
+
+.floating-logo-left-3 {
+  animation: floating-logo-left-3 5s ease-in-out infinite;
+  animation-delay: -2.7s;
+}
+
+.floating-logo-right-3 {
+  animation: floating-logo-right-3 4.6s ease-in-out infinite;
+  animation-delay: -0.8s;
+}
+
+.animate-tech-float {
+  animation: tech-float var(--logo-duration) ease-in-out infinite;
+  animation-delay: var(--logo-delay);
 }
 
 @keyframes smoothGradient {
@@ -53,6 +217,32 @@ body {
           66% { bottom: 80%; right: 20%; transform: rotate(270deg) scale(1.1); }
           100% { bottom: 10%; right: 10%; transform: rotate(360deg) scale(1.2); }
         }
+
+
+@keyframes slideReveal {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.animate-slide-reveal {
+  background: linear-gradient(
+    90deg,
+    #000000 0%,
+    #000000 40%,
+    #ffffff 50%,
+    #000000 60%,
+    #000000 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: slideReveal 3s linear infinite;
+}
 
 @theme inline {
   --font-heading: var(--font-sans);
