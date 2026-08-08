@@ -30,6 +30,30 @@ export function isIOS() {
   );
 }
 
+export type MobileBrowser =
+  | "safari"
+  | "chrome"
+  | "edge"
+  | "firefox"
+  | "samsung"
+  | "other";
+
+export function getMobileBrowser(): MobileBrowser {
+  if (typeof window === "undefined") {
+    return "other";
+  }
+
+  const userAgent = window.navigator.userAgent;
+
+  if (/FxiOS|Firefox/i.test(userAgent)) return "firefox";
+  if (/EdgiOS|EdgA|Edg\//i.test(userAgent)) return "edge";
+  if (/SamsungBrowser/i.test(userAgent)) return "samsung";
+  if (/CriOS|Chrome|Chromium/i.test(userAgent)) return "chrome";
+  if (/Safari/i.test(userAgent)) return "safari";
+
+  return "other";
+}
+
 export function isMobileDevice() {
   if (typeof window === "undefined") {
     return false;
