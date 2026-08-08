@@ -1,8 +1,65 @@
-import { Download, Smartphone, WifiOff } from "lucide-react";
+import { Download, HelpCircle, Share, Smartphone, WifiOff } from "lucide-react";
 
-import { isIOS } from "@/lib/pwaDetection";
+import { getMobileBrowser, isIOS } from "@/lib/pwaDetection";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { usePWAInstall } from "@/hooks/usePWAInstall";
+
+function InstallInstructions() {
+  const ios = isIOS();
+  const browser = getMobileBrowser();
+
+  if (ios) {
+    const needsSafari = browser !== "safari";
+
+    return (
+      <>
+        <p>
+          {needsSafari
+            ? "This browser cannot install the quest on iPhone. Open this page in Safari first."
+            : "Install the quest from Safari with these steps:"}
+        </p>
+        <ol className="list-decimal space-y-2 pl-5 text-slate-700">
+          {needsSafari && <li>Tap the browser menu and choose <strong>Open in Safari</strong>.</li>}
+          <li>Tap Safari&apos;s <strong>Share</strong> button.</li>
+          <li>Scroll down and tap <strong>Add to Home Screen</strong>.</li>
+          <li>Tap <strong>Add</strong>, then launch <strong>Morning Walk Quest</strong> from your home screen.</li>
+        </ol>
+      </>
+    );
+  }
+
+  if (browser === "firefox") {
+    return (
+      <>
+        <p>Install the quest from Firefox with these steps:</p>
+        <ol className="list-decimal space-y-2 pl-5 text-slate-700">
+          <li>Tap Firefox&apos;s three-dot menu.</li>
+          <li>Tap <strong>Install</strong> or <strong>Add to Home screen</strong>.</li>
+          <li>Confirm, then open <strong>Morning Walk Quest</strong> from your home screen.</li>
+        </ol>
+      </>
+    );
+  }
+
+  return (
+    <>
+      <p>Install the quest from your browser menu with these steps:</p>
+      <ol className="list-decimal space-y-2 pl-5 text-slate-700">
+        <li>Tap the three-dot browser menu.</li>
+        <li>Tap <strong>Install app</strong> or <strong>Add to Home screen</strong>.</li>
+        <li>Confirm the installation, then open <strong>Morning Walk Quest</strong> from your home screen.</li>
+      </ol>
+    </>
+  );
+}
 
 export default function InstallationRequired() {
   const { canInstall, install } = usePWAInstall();
@@ -80,6 +137,32 @@ export default function InstallationRequired() {
                   </p>
                 </article>
               )}
+
+              <Dialog>
+                <DialogTrigger
+                  render={
+                    <Button
+                      variant="outline"
+                      className="mt-3 w-full rounded-2xl border-slate-200 bg-white py-6 text-base font-bold text-slate-700 hover:bg-slate-50 cursor-pointer"
+                    />
+                  }
+                >
+                  <HelpCircle className="mr-2 h-5 w-5" />
+                  How to install in this browser
+                </DialogTrigger>
+
+                <DialogContent className="max-h-[calc(100dvh-2rem)] overflow-y-auto rounded-2xl bg-white p-6 text-sm leading-6 sm:max-w-md">
+                  <DialogHeader>
+                    <DialogTitle className="flex items-center gap-2 text-lg font-black text-slate-900">
+                      <Share className="h-5 w-5 text-cyan-700" />
+                      Install Morning Walk Quest
+                    </DialogTitle>
+                    <DialogDescription className="pt-2 text-sm leading-6 text-slate-600">
+                      <InstallInstructions />
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
             </section>
           </section>
         </article>
