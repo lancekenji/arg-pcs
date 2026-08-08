@@ -1,5 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Compass, LockKeyhole, QrCode, Sparkles, Target } from "lucide-react";
 
 import { useSessionStore } from "../stores/session.store";
@@ -25,6 +25,8 @@ function QuestPage() {
   const navigate = useNavigate();
   const game = useGame();
 
+  const activeSession = useSessionStore((state) => state.session);
+
   const revealAnswer = useSessionStore((state) => state.revealAnswer);
 
   const completeStage = useSessionStore((state) => state.completeStage);
@@ -34,7 +36,17 @@ function QuestPage() {
   const [scannerOpen, setScannerOpen] = useState(false);
   const [revealedAnswer, setRevealedAnswer] = useState<string | null>(null);
 
+  useEffect(() => {
+    if (activeSession?.phase === "finish") {
+      void navigate({ to: "/finish", replace: true });
+    }
+  }, [activeSession?.phase, navigate]);
+
   if (!game) {
+    if (activeSession?.phase === "finish") {
+      return null;
+    }
+
     return (
       <main className="min-h-dvh bg-slate-950 px-4 py-10">
         <section className="mx-auto flex min-h-[80dvh] w-full max-w-md items-center">
