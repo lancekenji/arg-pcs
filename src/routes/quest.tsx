@@ -250,7 +250,6 @@ function QuestPage() {
                     className="mt-4 flex min-h-14 w-full items-center justify-center gap-2 rounded-2xl bg-cyan-600 px-4 py-4 text-sm font-black text-white shadow-xl shadow-cyan-950/20 transition hover:-translate-y-0.5 hover:bg-cyan-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 active:translate-y-0 sm:px-6 sm:text-base"
                   >
                     <QrCode className="h-5 w-5 shrink-0" />
-                    Scan Quest Marker
                   </button>
                 </article>
               ) : (

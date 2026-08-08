@@ -48,7 +48,7 @@ export default function AnswerInput({
             value={value}
             onChange={(event) => setValue(event.target.value)}
             placeholder="Type answer here"
-            className="min-h-12 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-base font-semibold outline-none transition focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500"
+            className="min-h-12 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-black font-semibold outline-none transition focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500"
           />
 
           <button

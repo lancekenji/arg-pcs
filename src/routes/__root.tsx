@@ -21,7 +21,7 @@ function RootComponent() {
 
   return (
     <React.Fragment>
-      <main className="p-8">
+      <main className="p-5">
         <Outlet />
         <ReloadPrompt />
         <GameDialog />

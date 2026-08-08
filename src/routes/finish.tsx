@@ -146,12 +146,12 @@ function FinishPage() {
             {/* Reflection form */}
             <form onSubmit={handleSubmit} className="mt-6">
               <fieldset className="m-0 space-y-3 border-0 p-0 relative">
-                <legend className="mb-1 text-sm font-black text-slate-950">
+                <legend className="mb-1 text-xs font-black text-slate-950">
                   What did you learn from your journey?
                 </legend>
                 <img
                   src="/gopher-wondering.png"
-                  className="absolute -top-11 bottom-0 animate-bounce -z-10 right-0 h-[12vh] w-[19vw]"
+                  className="absolute -top-12 bottom-0 animate-bounce -z-10 right-0 h-[12vh] w-[23vw]"
                   alt="gopher wondering"
                 />
                 <textarea
