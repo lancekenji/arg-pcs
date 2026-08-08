@@ -162,10 +162,6 @@ function QuestPage() {
         <article className="relative z-10 flex flex-1 flex-col rounded-[2rem] border border-white/60 bg-white shadow-2xl shadow-cyan-950/30">
           {" "}
           {/* Decorative top bar */}
-          <aside
-            aria-hidden="true"
-            className="h-1.5 w-full bg-linear-to-r from-blue-600 via-cyan-400 to-blue-600"
-          />
           <section className="flex flex-1 flex-col p-5 sm:p-7">
             {/* Story identity */}
             <header>

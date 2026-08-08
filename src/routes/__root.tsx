@@ -4,6 +4,7 @@ import { isMobileDevice, isStandalone } from "../lib/pwaDetection";
 import InstallationRequired from "../components/custom/InstallationRequired";
 import MobileRequired from "../components/custom/MobileRequired";
 import GameDialog from "../components/custom/GameDialog";
+import ReloadPrompt from "@/components/custom/ReloadPrompt";
 
 export const Route = createRootRoute({
   component: RootComponent,
@@ -20,8 +21,11 @@ function RootComponent() {
 
   return (
     <React.Fragment>
-      <Outlet />
-      <GameDialog />
+      <main className="p-8">
+        <Outlet />
+        <ReloadPrompt />
+        <GameDialog />
+      </main>
     </React.Fragment>
   );
 }
